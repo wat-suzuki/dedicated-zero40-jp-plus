@@ -51,9 +51,8 @@ You can [grab the latest release here](../../releases).
 2. Unzip the release package from this repository and copy its contents (`system.zip`, `bootlogo.bmp`, etc.) to the root of your TF2/EXT SD card, overwriting if prompted.
 3. Add your NDS games and BIOS files, then insert the card into the TF2/EXT slot.
 
-## Configuration & Fonts
+##Fonts
 
-- **Datetime Switcher:** Press `SELECT` in the main menu to set the system date and time. Save in-game and reset from the menu for the game to recognize the change.
 - **Custom Fonts:** The release includes `NotoSansJP-Bold.ttf` (installed as `/mnt/SDCARD/system/assets/font.ttf` along with `OFL.txt`). You can replace `font.ttf` with any TrueType font of your choice. If missing, the launcher falls back to its built-in bitmap font.
 
 ## Credits & License
