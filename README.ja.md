@@ -6,7 +6,7 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 
 オリジナルの持つ「シンプルで迷わない操作感」や「ピクセルパーフェクトな整数スケーリング」を尊重しつつ、日本語ROM名の表示、上下画面の個別クロップ、タイトルごとの画面スワップ、Hi-Res 3Dの切り替え、スクリーンショット保存機能を追加しています。
 
-<img width=240 src="github/bootlogo-preview.png" title="Bootlogo" /> <img width=240 src="github/dedicated-menu.png" title="Menu" />
+<img width=240 src="github/bootlogo-preview.png" title="Bootlogo" />
 
 最新版は [Releasesページ](../../releases) からダウンロードできます。
 
