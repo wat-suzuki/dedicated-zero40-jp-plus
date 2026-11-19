@@ -14,10 +14,11 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 > 
 > 端を切り落としてでも**端数の出ない2倍（整数スケーリング）**を優先する設計により、文字やドット絵が一切にじまない、くっきりとした表示を実現しています。
 
-<img width=240 src="github/bootlogo-preview.png" title="Bootlogo" />
-<img width=240 src="github/original.png" title="Original" />
-<img width=240 src="github/pixel-perfect.png" title="Pixel Perfect" />
-<img width=240 src="github/hi-res.png" title="Hi-Res 3D" />
+
+| <img width="180" src="github/bootlogo-preview.png" alt="Bootlogo" /> | <img width="180" src="github/original.png" alt="Original" /> | <img width="180" src="github/pixel-perfect.png" alt="Pixel Perfect" /> | <img width="180" src="github/hi-res.png" alt="Hi-Res 3D" /> |
+| :---: | :---: | :---: | :---: |
+| **Bootlogo**<br>起動画面 | **Original**<br>標準表示 | **Pixel Perfect**<br>整数スケーリング | **Hi-Res 3D**<br>高解像度3D表示 |
+
 
 最新版は [Releasesページ](../../releases) からダウンロードできます。
 
@@ -25,6 +26,7 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 
 - **日本語ROM名の表示・自然順ソート:** `SDL2_ttf` と `NotoSansJP-Bold.ttf`（`font.ttf`）を使用し、日本語を含むゲームタイトルを正しく表示します。ゲーム一覧はひらがな・カタカナを同一視した自然順で並びます。
 - **上下独立の画面クロップ（拡大表示）:** 上画面のみ・下画面のみのオーバースキャンクロップを個別に切り替えられます。これにより上画面だけクロップしてピクセルパーフェクト表示、下画面はステータスやテキスト情報が見切れないよう元の表示にするといった使い方ができます。
+- **x2(2倍解像度)の切り替え:** 出力のみを2倍サイズとして拡大表示による歪みを縮小表示による鮮明な画像に切り替えられます。※クロップ表示の場合はどちらもピクセルパーフェクトで同じため効果はありません。下画面のみ拡大表示を解除した場合などに使用してください。
 - **Hi-Res 3D（高解像度3D）の切り替え:** ゲーム中からDraSticの3D高解像度設定（`hires_3d`）のON/OFFを切り替えられます。切り替え後は自動でセーブ＆再起動してレジュームします。
   - **※注意点:** 現状、Hi-Res 3DをONにするとソフトウェアレンダリングで動作するため、処理負荷の重いゲームでは動作が不安定になる場合があります。
 - **タイトルごとの上下画面スワップ:** プレイ中に上下画面の位置を入れ替えられます。設定はゲームタイトルごとに自動保存されます。
