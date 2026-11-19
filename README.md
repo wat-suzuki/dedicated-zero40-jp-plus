@@ -8,9 +8,15 @@ An unofficial, custom fork of [DEDICATED OS](https://github.com/dedicated-os/ded
 This build preserves the core minimalist experience of the original DEDICATED OS while adding Japanese ROM name rendering, independent per-screen cropping, per-title screen swapping, Hi-Res 3D toggling, and a screenshot shortcut.
 
 
-| <img width="180" src="github/bootlogo-preview.png" alt="Bootlogo" /> | <img width="180" src="github/original.png" alt="Original" /> | <img width="180" src="github/pixel-perfect.png" alt="Pixel Perfect" /> | <img width="180" src="github/hi-res.png" alt="Hi-Res 3D" /> |
-| :---: | :---: | :---: | :---: |
-| **Bootlogo**<br>Custom Boot Screen | **Original**<br>Default Display | **Pixel Perfect**<br>Integer Scaling | **Hi-Res 3D**<br>High-Res 3D |
+
+| <img width="240" src="github/bootlogo-preview.png" alt="Bootlogo" /> | <img width="240" src="github/original.png" alt="Original" /> |
+| :---: | :---: |
+| **Bootlogo** | **Original** |
+
+| <img width="240" src="github/pixel-perfect.png" alt="Pixel Perfect" /> | <img width="240" src="github/hi-res.png" alt="Hi-Res 3D" /> |
+| :---: | :---: |
+| **Pixel Perfect** | **Hi-Res 3D** |
+
 
 You can [grab the latest release here](../../releases).
 
