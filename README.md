@@ -14,10 +14,6 @@ This build preserves the core minimalist experience of the original DEDICATED OS
 | :---: | :---: |
 | **Bootlogo** | **Original** |
 
-| <img width="240" src="github/pixel-perfect.png" alt="Pixel Perfect" /> | <img width="240" src="github/hi-res.png" alt="Hi-Res 3D" /> |
-| :---: | :---: |
-| **Pixel Perfect** | **Hi-Res 3D** |
-
 
 You can [grab the latest release here](../../releases).
 
