@@ -1,8 +1,8 @@
 [English](README.md) | 日本語
 
-# DEDICATED OS JP+ (`dedicated-zero40-jp-plus`)
+# DS ZERO40 JP+
 
-MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](https://github.com) の非公式カスタム版（フォーク）です。
+MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](https://github.com/dedicated-os/dedicated-zero40) の非公式カスタム版（フォーク）です。
 
 オリジナルの持つ「シンプルで迷わない操作感」や「ピクセルパーフェクトな整数スケーリング」を尊重しつつ、日本語ROM名の表示、上下画面の個別クロップ、タイトルごとの画面スワップ、Hi-Res 3Dの切り替え、スクリーンショット保存機能を追加しています。
 
@@ -10,7 +10,7 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 > 
 > ニンテンドーDSの横幅（`256px`）を**2倍（`512px`）**に拡大すると、MagicX Zero 40の画面横幅（`480px`）に対して合計 `32px` だけはみ出します。
 > 
-> dedicatedOSでは、画面枠に無理やり収めるために中途半端な倍率へ縮小するのではなく、**はみ出す横幅（左右16pxずつ）をあえてクロップ（切り落とし）**しています。
+> DEDICATED OSでは、画面枠に無理やり収めるために中途半端な倍率へ縮小するのではなく、**はみ出す横幅（左右16pxずつ）をあえてクロップ（切り落とし）**しています。
 > 
 > 端を切り落としてでも**端数の出ない2倍（整数スケーリング）**を優先する設計により、文字やドット絵が一切にじまない、くっきりとした表示を実現しています。
 
@@ -61,13 +61,13 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 MagicX Zero40は2枚のSDカードを使用します。**SD1（システム起動用）はオリジナル版と全く同じもの**を使用し、**SD2（データ・ランチャー用）に本プロジェクトのファイル**を配置します。
 
 ### 1. SD1（本体上部 TF1/INT スロット用）の準備
-1. オリジナル作者が配布している専用の軽量ベースイメージ（`main-zero40`）を [本家Releasesページ](https://github.com/releases)（または関連リポジトリ）からダウンロードします。
+1. オリジナル作者が配布している専用の軽量ベースイメージ（`main-zero40`）を [Zero40用オリジナルイメージのReleasesページ](https://github.com/dedicated-os/main-zero40/releases)からダウンロードします。
 2. Rufus や BalenaEtcher などの書き込みツールを使い、小容量のSDカードにイメージを書き込みます。
 3. 本体の **上部（TF1/INT）スロット** に挿入します。
 
 ### 2. SD2（本体下部 TF2/EXT スロット用）の準備
 1. ゲーム保存用のSDカードを **FAT32（パーティション形式は GPT ではなく MBR）** でフォーマットします。
-2. 本リポジトリの [Releasesページ](../../releases) から最新の `dedicated-zero40-jp-plus` のzipファイルをダウンロードして解凍します。
+2. 本リポジトリの [Releasesページ](../../releases) から最新の `ds-zero40-jp-plus` のzipファイルをダウンロードして解凍します。
 3. 解凍した中身の **すべてのファイルとフォルダ** を、フォーマットしたSDカードのルート（一番上の階層）にそのままコピーします。
 （DraSticの初期設定なども最適化済みの状態で含まれています）
 4. SDカード内の `/games/` フォルダにNDSのROMファイルやBIOSファイルを配置します。ファイル名は日本語に対応しています。
@@ -76,7 +76,7 @@ MagicX Zero40は2枚のSDカードを使用します。**SD1（システム起�
 
 ## アップデート手順（既存環境からの更新）
 
-すでに本家 DEDICATED OS、または旧バージョンの JP+ を導入済みの場合は、以下の手順だけで更新できます。
+すでにオリジナルの DEDICATED OS、または旧バージョンの JP+ を導入済みの場合は、以下の手順だけで更新できます。
 
 1. 本リポジトリの [Releasesページ](../../releases) から最新のzipファイルをダウンロードして解凍します。
 2. 解凍した中にある **`system.zip`** と **`bootlogo.bmp`** の2つを、SD2（TF2/EXT）のルート（一番上の階層）に配置（上書きコピー）します。
@@ -84,13 +84,13 @@ MagicX Zero40は2枚のSDカードを使用します。**SD1（システム起�
 3. SDカードを本体に戻して起動します。
 4. **初回起動時に `system.zip` が自動的に展開されてシステムが更新され、完了後に `system.zip` 自体は自動削除されます。**
 
-## フォントのカスタマイズ
+## フォント
 
-- **フォントの変更:** 配布パッケージには `NotoSansJP-Bold.ttf` が含まれており、実機では `/mnt/SDCARD/system/assets/font.ttf`（ライセンス表記の `OFL.txt` とセット）として配置されます。お好みのTrueTypeフォントを `font.ttf` にリネームして差し替えることも可能です。フォントが見つからない場合は内蔵ビットマップフォントで表示されます。
+ランチャー画面とBootLogoは同梱の **Noto Sans JP Bold** を使用します。実機では `/mnt/SDCARD/system/assets/font.ttf` として配置され、ライセンスは `OFL.txt` に記載しています。作者オリジナルのビットマップフォント画像は使用・同梱していません。
 
 ## クレジット・ライセンス
 
-- オリジナル版 **DEDICATED OS**: [shauninman / dedicated-os](https://github.com)
+- オリジナル版 **DEDICATED OS**: [shauninman / dedicated-os](https://github.com/dedicated-os/dedicated-zero40)。本プロジェクトはこのZero40向けフォークです。
 - 同梱日本語フォント **Noto Sans JP**: SIL Open Font License 1.1（`OFL.txt`）に基づき同梱しています。
 - プロジェクト全体のライセンスについては [LICENSE.md](LICENSE.md) をご覧ください。
 

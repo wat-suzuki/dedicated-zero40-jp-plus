@@ -763,25 +763,11 @@ static int compareNatural(const char *a, const char *b) {
 // --------------------------------------------
 
 typedef struct {
-	uint8_t map[128];
-	uint8_t char_widths[128];
-	int8_t kern_pairs[128][128];
-
-	SDL_Surface* bitmap;
 	TTF_Font* ttf;
-	const char* name;
-	const char* charset;
 	int8_t offset_x;
 	int8_t offset_y;
 	int8_t tracking;
-	uint8_t tile_width;
 	uint8_t tile_height;
-	uint8_t tiles_wide;
-	uint8_t tiles_high;
-	uint8_t missing;
-
-	uint8_t char_width;
-	uint8_t low_width;
 } Font;
 
 static void* ttf_library;
@@ -821,170 +807,21 @@ static int TTF_load(void) {
 	return 1;
 }
 
-Font* font36 = &(Font){
-	.name = "font-dedicated-36.png",
-	.charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-'!?&0123456789/$+%,: ",
-	.tile_width = 36,
-	.tile_height = 36,
-	.offset_x = -3,
-	.tracking = 6,
-	.char_width = 30,
-	.low_width = 24,
-	.char_widths = {
-		['I'] = 6,
-		['1'] = 18,
-		['.'] = 6,
-		[','] = 6,
-		['-'] = 24,
-		['\''] = 6,
-		['!'] = 6,
-		[':'] = 6,
-		['&'] = 36,
-		[' '] = 12,
-	},
-	.kern_pairs = {
-		['A']['T'] = -6,
-		['T']['A'] = -6,
-		['A']['V'] = -6,
-		['V']['A'] = -6,
-		['A']['W'] = -3,
-		['W']['A'] = -3,
-		['A']['Y'] = -6,
-		['Y']['A'] = -6,
-		['T']['-'] = -6,
-		['-']['T'] = -6,
-	},
-};
-
-Font* font24 = &(Font){
-	.name = "font-dedicated-24.png",
-	.charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-'!?&0123456789/$+%,: ",
-	.tile_width = 24,
-	.tile_height = 24,
-	.offset_x = -2,
-	.tracking = 4,
-	.char_width = 20,
-	.char_widths = {
-		['I'] = 4,
-		['1'] = 12,
-		['.'] = 4,
-		[','] = 4,
-		['-'] = 16,
-		['\''] = 4,
-		['!'] = 4,
-		[':'] = 4,
-		[' '] = 8,
-		['%'] = 21,
-	},
-	.kern_pairs = {
-		['A']['T'] = -4,
-		['T']['A'] = -4,
-		['A']['V'] = -4,
-		['V']['A'] = -4,
-		['A']['W'] = -2,
-		['W']['A'] = -2,
-		['T']['-'] = -4,
-		['-']['T'] = -4,
-	},
-};
-
-Font* font18 = &(Font){
-	.name = "font-dedicated-18.png",
-	.charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-'!?&0123456789/$+%,: ",
-	.tile_width = 18,
-	.tile_height = 18,
-	.offset_x = -1,
-	.tracking = 3,
-	.char_width = 15,
-	.char_widths = {
-		['I'] = 3,
-		['1'] = 9,
-		['.'] = 3,
-		[','] = 3,
-		['-'] = 12,
-		['\''] = 3,
-		['!'] = 3,
-		[':'] = 3,
-		[' '] = 6,
-	},
-	.kern_pairs = {
-		['A']['T'] = -3,
-		['T']['A'] = -3,
-		['A']['V'] = -3,
-		['V']['A'] = -3,
-		['A']['W'] = -1,
-		['W']['A'] = -1,
-		['T']['-'] = -3,
-		['-']['T'] = -3,
-	},
-};
-
-Font* font16 = &(Font){
-	.name = "font-dedicated-16.png",
-	.charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-'!?&0123456789/$+%,: ",
-	.tile_width = 16,
-	.tile_height = 16,
-	.offset_x = -1,
-	.tracking = 4,
-	.char_width = 12,
-	.char_widths = {
-		['I'] = 2,
-		['1'] = 8,
-		['.'] = 2,
-		[','] = 2,
-		['-'] = 10,
-		['\''] = 2,
-		['!'] = 2,
-		[':'] = 2,
-		[' '] = 4,
-	},
-	.kern_pairs = {
-		['A']['T'] = -2,
-		['T']['A'] = -2,
-		['A']['V'] = -2,
-		['V']['A'] = -2,
-		['A']['W'] = -1,
-		['W']['A'] = -1,
-		['T']['-'] = -2,
-		['-']['T'] = -2,
-	},
-};
+Font* font36 = &(Font){.tile_height = 36, .tracking = 2};
+Font* font24 = &(Font){.tile_height = 24, .tracking = 2};
+Font* font18 = &(Font){.tile_height = 18, .tracking = 1};
+Font* font16 = &(Font){.tile_height = 16, .tracking = 1};
 
 void Font_init(Font* font) {
-	char path[MAX_FILE];
-	sprintf(path, "%s/%s", ASSETS_PATH, font->name);
-	font->bitmap = IMG_Load(path);
 	font->ttf = NULL;
-	if (!font->bitmap) return;
-	SDL_SetSurfaceBlendMode(font->bitmap, SDL_BLENDMODE_BLEND);
-	
-	font->tiles_wide = font->bitmap->w / font->tile_width;
-	font->tiles_high = font->bitmap->h / font->tile_height;
-	font->missing = (font->tiles_wide * font->tiles_high) - 1;
-	
-	memset(font->map, font->missing, sizeof(font->map));
-	for (uint8_t i=0; font->charset[i]; i++) {
-		unsigned char c = font->charset[i];
-		font->map[c] = (uint8_t)i;
-		if (!font->char_widths[c]) {
-			if (font->low_width && c>='a' && c<='z') {
-				font->char_widths[c] = font->low_width;
-			}
-			else {
-				font->char_widths[c] = font->char_width;
-			}
-		}
+	if (ttf_open_font_fn) {
+		font->ttf = ttf_open_font_fn(FONT_PATH, font->tile_height);
+		if (!font->ttf) SDL_Log("Could not load font %s at %d px: %s", FONT_PATH, font->tile_height, ttf_get_error_fn());
 	}
 }
-
-static void Font_initJapanese(Font* font) {
-	font->ttf = ttf_open_font_fn(FONT_PATH, font->tile_height);
-	if (!font->ttf) SDL_Log("Could not load Japanese font %s: %s", FONT_PATH, ttf_get_error_fn());
-	else SDL_Log("Loaded Japanese font %s at %d px", FONT_PATH, font->tile_height);
-}
 void Font_quit(Font* font) {
-	if (font->bitmap) SDL_FreeSurface(font->bitmap);
 	if (font->ttf) ttf_close_font_fn(font->ttf);
+	font->ttf = NULL;
 }
 
 static int Font_hasNonAscii(const char* text) {
@@ -992,81 +829,22 @@ static int Font_hasNonAscii(const char* text) {
 	return 0;
 }
 
-static unsigned char Font_bitmapChar(const unsigned char* text) {
-	return *text < 128 ? *text : '?';
-}
-
-static void __Font_drawChar(Font* font, SDL_Surface* dst, unsigned char c, int x, int y) {
-	int i = c<128 ? font->map[c] : font->missing;
-	int tx = i % font->tiles_wide;
-	int ty = i / font->tiles_wide;
-	int tw = font->tile_width;
-	int th = font->tile_height;
-	SDL_BlitSurface(font->bitmap, &(SDL_Rect){tx*tw,ty*th,tw,th}, dst, &(SDL_Rect){x,y,tw,th});
-}
-
-static void __Font_drawText(Font* font, const char* text, int* out_width, int* out_height, SDL_Surface** out_surface) {
-	SDL_Surface* dst = NULL;
-	if (out_surface) {
-		int w = 0;
-		int h = 0;
-		__Font_drawText(font, text, &w, &h, NULL);
-		dst = SDL_CreateRGBSurfaceWithFormat(0, w,h, 32, SDL_PIXELFORMAT_RGBA32);
-		if (!dst) { *out_surface = NULL; return; }
-		SDL_FillRect(dst, NULL, 0);
-	}
-	
-	const unsigned char* tmp = (const unsigned char*)text;
-	int ow = 0;
-	int oh = font->tile_height;
-	while (*tmp) {
-		unsigned char c = Font_bitmapChar(tmp);
-		tmp += UTF8_charBytes(tmp);
-		unsigned char n = Font_bitmapChar(tmp);
-		if (!font->char_widths[c]) c = toupper(c);
-		if (n && !font->char_widths[n]) n = toupper(n);
-		
-		if (out_surface) __Font_drawChar(font, dst, c, ow,0);
-
-		ow += font->char_widths[c] ? font->char_widths[c] : font->char_width;
-		if (n) {
-			ow += font->tracking;
-			if (font->kern_pairs[c][n]) {
-				ow += font->kern_pairs[c][n];
-			}
-			else {
-				ow += font->kern_pairs[0][n];
-			}
-		}
-	}
-	ow -= font->offset_x * 2; // reverse pad?
-	
-	if (out_width) *out_width = ow;
-	if (out_height) *out_height = oh;
-	if (out_surface) *out_surface = dst;
-}
-
 void Font_getTextSize(Font* font, const char* text, int* out_width, int* out_height) {
-	if (font->ttf && Font_hasNonAscii(text)) {
-		int w=0, h=0;
-		if (ttf_size_utf8_fn(font->ttf, text, &w, &h)==0) {
-			if (out_width) *out_width=w;
-			if (out_height) *out_height=h;
-			return;
-		}
-		if (!ttf_size_error_logged++) SDL_Log("TTF_SizeUTF8 failed for ROM name: %s", ttf_get_error_fn());
+	int w=0, h=font->tile_height;
+	if (font->ttf && ttf_size_utf8_fn(font->ttf, text, &w, &h)==0) {
+		if (out_width) *out_width=w;
+		if (out_height) *out_height=h;
+		return;
 	}
-	__Font_drawText(font, text, out_width, out_height, NULL);
+	if (!ttf_size_error_logged++) SDL_Log("TTF_SizeUTF8 failed: %s", ttf_get_error_fn ? ttf_get_error_fn() : "font unavailable");
+	if (out_width) *out_width=0;
+	if (out_height) *out_height=h;
 }
 
 SDL_Surface* Font_drawText(Font* font, const char* text) {
-	if (font->ttf && Font_hasNonAscii(text)) {
-		SDL_Surface* surface = ttf_render_utf8_fn(font->ttf, text, WHITE_COLOR);
-		if (!surface && !ttf_render_error_logged++) SDL_Log("TTF_RenderUTF8_Blended failed: %s", ttf_get_error_fn());
-		if (surface) return surface;
-	}
-	SDL_Surface* surface = NULL;
-	__Font_drawText(font, text, NULL, NULL, &surface);
+	if (!font->ttf || !ttf_render_utf8_fn) return NULL;
+	SDL_Surface* surface = ttf_render_utf8_fn(font->ttf, text, WHITE_COLOR);
+	if (!surface && !ttf_render_error_logged++) SDL_Log("TTF_RenderUTF8_Blended failed: %s", ttf_get_error_fn());
 	return surface;
 }
 
@@ -1530,20 +1308,17 @@ static void Device_goodbye(void) {
 	if (!app.bg) app.bg = IMG_LoadTexture(app.renderer, ASSETS_PATH "/bg.png");
 	real_SDL_RenderCopy(app.renderer, app.bg, NULL, NULL);
 	
-	Font_shadowText(app.renderer, font24, "Dedicated OS JP+",	6, 6, LIGHT_COLOR);
+	Font_shadowText(app.renderer, font24, "DS ZERO40 JP+",	6, 6, LIGHT_COLOR);
 	
 	int battery = getInt(app.bat);
 	int is_charging = getInt(app.usb);
 	App_battery(battery,is_charging,1);	
 	
-	const char* lines[] = {
-		"Saving &",
-		"shutting",
-		"down...",
-	};
-	for (int i=0; i<3; i++) {
-		Font_shadowText(app.renderer, font36, lines[i], 6, 42+(i*36), WHITE_COLOR);
-	}
+	const char* message = "Saving & shutting down...";
+	int message_width = 0;
+	Font_getTextSize(font24, message, &message_width, NULL);
+	Font_shadowText(app.renderer, font24, message,
+		(SCREEN_WIDTH - message_width) / 2, 44, WHITE_COLOR);
 	App_captureBeforePresent(app.renderer);
 	real_SDL_RenderPresent(app.renderer);
 }
@@ -2068,7 +1843,7 @@ static void App_empty(void) {
 	
 	real_SDL_RenderCopy(app.renderer, app.bg, NULL, NULL);
 
-	Font_shadowText(app.renderer, font24, "Dedicated OS JP+",	6, 6, LIGHT_COLOR);
+	Font_shadowText(app.renderer, font24, "DS ZERO40 JP+",	6, 6, LIGHT_COLOR);
 	Font_shadowText(app.renderer, font36, "No games found", 6, 42, WHITE_COLOR);
 	
 	App_captureBeforePresent(app.renderer);
@@ -2593,7 +2368,7 @@ static void App_datetime(void) {
 			App_battery(battery,is_charging,1);
 			
 			// system
-			Font_shadowText(app.renderer, font24, "Nintendo DS", 6,6, LIGHT_COLOR);
+			Font_shadowText(app.renderer, font24, "DS ZERO40 JP+", 6,6, LIGHT_COLOR);
 			
 			// game name
 			char name[MAX_FILE];
@@ -2707,7 +2482,7 @@ static void App_init(void) {
 	app.capacity = 16;
 	app.items = malloc(sizeof(Entry) * app.capacity);
 
-	Fonts_init();
+	// Fonts are opened after SDL_ttf is initialized in SDL_Init.
 	
 	// get games
 	for (int i=0; i<NUMBER_OF(dirs); i++) {
@@ -3104,7 +2879,7 @@ static void App_menu(void) {
 			real_SDL_RenderCopy(app.renderer, app.overlay, NULL, NULL);
 			
 			// system
-			Font_shadowText(app.renderer, font24, "Nintendo DS", 6,6, LIGHT_COLOR);
+			Font_shadowText(app.renderer, font24, "DS ZERO40 JP+", 6,6, LIGHT_COLOR);
 
 			int x,y,w,h;
 			
@@ -3158,7 +2933,10 @@ static void App_menu(void) {
 						color = DARK_COLOR;
 					}
 				
-					renderer(app.renderer, font24, items[i], x+8, y+8+(i*oh), color);
+					int text_height = 0;
+					Font_getTextSize(font24, items[i], NULL, &text_height);
+					int text_y = y + (i * oh) + (36 - text_height) / 2;
+					renderer(app.renderer, font24, items[i], x+8, text_y, color);
 				}
 			}
 			else if (mode==MODE_ARCHIVE) {
@@ -3198,7 +2976,9 @@ static void App_menu(void) {
 					App_trunc(font18, name, 440, fit);
 					
 					real_SDL_RenderCopy(app.renderer, app.icons, &(SDL_Rect){item->hidden?24:0,0,24,24}, &(SDL_Rect){x+4,oy+4,24,24});
-					Font_renderText(app.renderer, font18, fit,	x+32,oy+9, c);
+					int text_height = 0;
+					Font_getTextSize(font18, fit, NULL, &text_height);
+					Font_renderText(app.renderer, font18, fit, x+32, oy+(h-text_height)/2, c);
 				}
 			}
 			
@@ -3335,8 +3115,12 @@ static void App_batmon(void) {
 
 			real_SDL_RenderCopy(app.renderer, app.bg, NULL, NULL);
 			
-			Font_shadowText(app.renderer, font24, "Dedicated OS JP+", 6,6, LIGHT_COLOR);
-			Font_shadowText(app.renderer, font36, is_charging && battery<100 ? "Charging..." : "Fully charged", 6,42, WHITE_COLOR);
+			Font_shadowText(app.renderer, font24, "DS ZERO40 JP+", 6,6, LIGHT_COLOR);
+			const char* charge_message = is_charging && battery<100 ? "Charging..." : "Fully charged";
+			int charge_message_width = 0;
+			Font_getTextSize(font24, charge_message, &charge_message_width, NULL);
+			Font_shadowText(app.renderer, font24, charge_message,
+				(SCREEN_WIDTH - charge_message_width) / 2, 44, WHITE_COLOR);
 
 			App_battery(battery,is_charging,1);
 			
@@ -3381,16 +3165,13 @@ int SDL_Init(Uint32 flags) {
 	if (result==0) {
 		if (access(FONT_PATH, R_OK)==0) {
 			if (TTF_load() && ttf_init_fn()==0) {
-				SDL_Log("SDL_ttf initialized; loading Japanese fonts");
-				Font_initJapanese(font36);
-				Font_initJapanese(font24);
-				Font_initJapanese(font18);
-				Font_initJapanese(font16);
+				SDL_Log("SDL_ttf initialized; loading Noto Sans JP for all launcher text");
+				Fonts_init();
 			}
 			else if (ttf_library) SDL_Log("SDL_ttf initialization failed: %s", ttf_get_error_fn());
-			else SDL_Log("SDL_ttf runtime library unavailable; using bitmap fonts");
+			else SDL_Log("SDL_ttf runtime library unavailable; launcher text will be unavailable");
 		}
-		else SDL_Log("Japanese font not found: %s", FONT_PATH);
+		else SDL_Log("Noto Sans JP font not found: %s", FONT_PATH);
 	}
 	return result;
 }

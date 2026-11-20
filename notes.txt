@@ -28,7 +28,7 @@ CHANGE LOG
 - cache more menu bits?
 	to reduce memory churn
 
-- can I adapt the design to my dedicated-os-like model-s ui?
+- can I adapt the design to my minimal model-s UI?
 
 KNOWN ISSUES
 - in_drastic_menu doesn't work anymore (so what)

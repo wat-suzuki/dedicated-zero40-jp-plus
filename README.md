@@ -1,7 +1,8 @@
 
 English | [日本語](README.ja.md)
 
-# DS ZERO40 JP+ (`ds-zero40-jp-plus`)
+
+# DS ZERO40 JP+
 
 An unofficial, custom fork of [DEDICATED OS](https://github.com/dedicated-os/dedicated-zero40) for playing Nintendo DS on the MagicX Zero40.
 
@@ -56,15 +57,15 @@ You can [grab the latest release here](../../releases).
 
 ### Updating from Original DEDICATED OS (or an older JP+ release)
 
-1. Ensure you already have the official [DEDICATED OS](https://github.com/dedicated-os/dedicated-zero40/releases) installed and working on your TF2/EXT SD card.
-2. Download the latest `dedicated-zero40-jp-plus` zip from the [Releases](../../releases) page and unzip it.
+1. Ensure you already have the existing Zero40 base system installed and working on your TF2/EXT SD card.
+2. Download the latest `ds-zero40-jp-plus` zip from the [Releases](../../releases) page and unzip it.
 3. Copy both `system.zip` and `bootlogo.bmp` to the root of your TF2/EXT SD card, overwriting the existing files.
    *(Note: Replacing only `system.zip` will not update the boot logo shortcut guide.)*
 4. Eject the SD card safely, insert it into the bottom TF2/EXT slot, and boot your device.
 
 ## Fonts
 
-- **Custom Fonts:** The release includes `NotoSansJP-Bold.ttf` (installed as `/mnt/SDCARD/system/assets/font.ttf` along with `OFL.txt`). You can replace `font.ttf` with any TrueType font of your choice. If missing, the launcher falls back to its built-in bitmap font.
+The launcher UI and BootLogo use the bundled **Noto Sans JP Bold** font, installed as `/mnt/SDCARD/system/assets/font.ttf` with its `OFL.txt` license. The original bitmap font images are not used or included.
 
 ## Credits & License
 
