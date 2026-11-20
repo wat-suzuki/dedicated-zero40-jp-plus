@@ -53,7 +53,7 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 MagicX Zero40は2枚のSDカードを使用します。**SD1（システム起動用）はオリジナル版と全く同じもの**を使用し、**SD2（データ・ランチャー用）に本プロジェクトのファイル**を配置します。
 
 ### 1. SD1（本体上部 TF1/INT スロット用）の準備
-1. オリジナル作者が配布している専用の軽量ベースイメージ（`main-zero40`）を [DEDICATED OSのReleasesページ](https://github.com/dedicated-os/dedicated-zero40/releases)からダウンロードします。
+1. オリジナル作者が配布している専用の軽量ベースイメージ（`main-zero40`）を [Zero40用オリジナルイメージのReleasesページ](https://github.com/dedicated-os/main-zero40/releases)からダウンロードします。
 2. Rufus や BalenaEtcher などの書き込みツールを使い、小容量のSDカードにイメージを書き込みます。
 3. 本体の **上部（TF1/INT）スロット** に挿入します。
 

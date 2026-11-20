@@ -43,7 +43,7 @@ You can [grab the latest release here](../../releases).
 
 ### Fresh Installation
 
-1. Follow the [Zero40 base system installation guide](https://github.com/dedicated-os/dedicated-zero40/releases) to flash `main-zero40` (TF1/INT) and set up your FAT32 SD card (TF2/EXT).
+1. Follow the [Zero40 original image releases](https://github.com/dedicated-os/main-zero40/releases) to flash `main-zero40` (TF1/INT) and set up your FAT32 SD card (TF2/EXT).
 2. Download the latest `ds-zero40-jp-plus` zip from the [Releases](../../releases) page, unzip it, and copy its contents (`system.zip`, `bootlogo.bmp`, etc.) to the root of your TF2/EXT SD card, overwriting if prompted.
 3. Add your NDS games and BIOS files to `/games/`, then insert the card into the bottom TF2/EXT slot.
 
