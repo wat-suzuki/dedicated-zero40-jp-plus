@@ -1,16 +1,23 @@
 
 English | [日本語](README.ja.md)
 
+
 # DS ZERO40 JP+
 
 An unofficial, custom fork of [DEDICATED OS](https://github.com/dedicated-os/dedicated-zero40) for playing Nintendo DS on the MagicX Zero40.
 
 This build preserves the core minimalist experience of the original DEDICATED OS while adding Japanese ROM name rendering, independent per-screen cropping, per-title screen swapping, Hi-Res 3D toggling, and a screenshot shortcut.
 
-<img width=240 src="github/bootlogo-preview.png" title="Bootlogo" />
-<img width=240 src="github/original.png" title="Original" />
-<img width=240 src="github/pixel-perfect.png" title="Pixel Perfect" />
-<img width=240 src="github/hi-res.png" title="Hi-Res 3D" />
+
+
+| <img width="240" src="github/bootlogo-preview.png" alt="Bootlogo" /> | <img width="240" src="github/original.png" alt="Original" /> |
+| :---: | :---: |
+| **Bootlogo** | **Original** |
+
+| <img width="240" src="github/pixel-perfect.png" alt="Pixel Perfect" /> | <img width="240" src="github/hi-res.png" alt="Hi-Res 3D" /> |
+| :---: | :---: |
+| **Pixel Perfect** | **Hi-Res 3D** |
+
 
 You can [grab the latest release here](../../releases).
 
@@ -19,6 +26,7 @@ You can [grab the latest release here](../../releases).
 - **Japanese ROM Names:** Renders UTF-8 / Japanese game titles using `SDL2_ttf` and `NotoSansJP-Bold.ttf` (`font.ttf`), with natural sorting (combining Hiragana and Katakana).
 - **Independent Screen Crop:** Toggle integer scaling / overscan cropping individually for the top or bottom screen.
 - **Per-Title Screen Swap:** Swap the top and bottom screens on the fly. The state is saved per game title.
+- **2x Resolution Toggle:** Doubles the output resolution to replace upscaling distortion with sharper downscaled visuals. 
 - **Hi-Res 3D Toggle:** Switch DraStic's high-resolution 3D rendering (`hires_3d`) on or off directly from in-game. Automatically restarts and resumes your session.
 - **Screenshot Capture:** Save combined dual-screen screenshots directly to `/mnt/SDCARD/userdata/screenshots/`.
 
@@ -43,8 +51,8 @@ You can [grab the latest release here](../../releases).
 
 ### Fresh Installation
 
-1. Follow the [Zero40 original image releases](https://github.com/dedicated-os/main-zero40/releases) to flash `main-zero40` (TF1/INT) and set up your FAT32 SD card (TF2/EXT).
-2. Download the latest `ds-zero40-jp-plus` zip from the [Releases](../../releases) page, unzip it, and copy its contents (`system.zip`, `bootlogo.bmp`, etc.) to the root of your TF2/EXT SD card, overwriting if prompted.
+1. Follow the official installation guide on [dedicated-os/dedicated-zero40](https://github.com/dedicated-os/ds-zero40/releases) to flash `main-zero40` (TF1/INT) and set up your FAT32 SD card (TF2/EXT).
+2. Download the latest `dedicated-zero40-jp-plus` zip from the [Releases](../../releases) page, unzip it, and copy its contents (`system.zip`, `bootlogo.bmp`, etc.) to the root of your TF2/EXT SD card, overwriting if prompted.
 3. Add your NDS games and BIOS files to `/games/`, then insert the card into the bottom TF2/EXT slot.
 
 ### Updating from Original DEDICATED OS (or an older JP+ release)
