@@ -20,10 +20,6 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 | :---: | :---: |
 | **Bootlogo** | **Original** |
 
-| <img width="240" src="github/pixel-perfect.png" alt="Pixel Perfect" /> | <img width="240" src="github/hi-res.png" alt="Hi-Res 3D" /> |
-| :---: | :---: |
-| **Pixel Perfect** | **Hi-Res 3D** |
-
 
 
 最新版は [Releasesページ](../../releases) からダウンロードできます。
