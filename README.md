@@ -3,9 +3,9 @@ English | [日本語](README.ja.md)
 
 # DS ZERO40 JP+
 
-A Nintendo DS launcher for the MagicX Zero40.
+An unofficial, custom fork of [DEDICATED OS](https://github.com/dedicated-os/dedicated-zero40) for playing Nintendo DS on the MagicX Zero40.
 
-This build provides a minimalist experience and adds Japanese ROM name rendering, independent per-screen cropping, per-title screen swapping, Hi-Res 3D toggling, and a screenshot shortcut.
+This build preserves the core minimalist experience of the original DEDICATED OS while adding Japanese ROM name rendering, independent per-screen cropping, per-title screen swapping, Hi-Res 3D toggling, and a screenshot shortcut.
 
 <img width=240 src="github/bootlogo-preview.png" title="Bootlogo" />
 <img width=240 src="github/original.png" title="Original" />
@@ -47,7 +47,7 @@ You can [grab the latest release here](../../releases).
 2. Download the latest `ds-zero40-jp-plus` zip from the [Releases](../../releases) page, unzip it, and copy its contents (`system.zip`, `bootlogo.bmp`, etc.) to the root of your TF2/EXT SD card, overwriting if prompted.
 3. Add your NDS games and BIOS files to `/games/`, then insert the card into the bottom TF2/EXT slot.
 
-### Updating an existing Zero40 setup
+### Updating from Original DEDICATED OS (or an older JP+ release)
 
 1. Ensure you already have the existing Zero40 base system installed and working on your TF2/EXT SD card.
 2. Download the latest `ds-zero40-jp-plus` zip from the [Releases](../../releases) page and unzip it.
@@ -61,5 +61,6 @@ The launcher UI and BootLogo use the bundled **Noto Sans JP Bold** font, install
 
 ## Credits & License
 
+- Original **DEDICATED OS** by [shauninman / dedicated-os](https://github.com/dedicated-os/dedicated-zero40).
 - Bundled Japanese font **Noto Sans JP** licensed under the SIL Open Font License 1.1 (`OFL.txt`).
 - See [LICENSE.md](LICENSE.md) for project license details.
