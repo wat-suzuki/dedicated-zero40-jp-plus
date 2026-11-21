@@ -10,9 +10,16 @@ This build preserves the core minimalist experience of the original DEDICATED OS
 
 
 
-| <img width="240" src="github/bootlogo-preview.png" alt="Bootlogo" /> | <img width="240" src="github/original.png" alt="Original" /> |
+| <img width="240" src="github/bootlogo-preview.png" alt="Menu" /> |  |
 | :---: | :---: |
-| **Bootlogo** | **Original** |
+| **Menu** |  |
+| <img width="240" src="github/blue_original.png" alt="Oriinal" /> | <img width="240" src="github/blue_cropped.png" alt="Pixel Perfect" /> |
+| **Oriinal** | **Pixel Perfect** |
+| <img width="240" src="github/blue_cropped_hires.png" alt="Hi-Res 3D" /> | <img width="240" src="github/blue_cropped_under.png" alt="UnCropped Upper" /> |
+| **Hi-Res 3D** | **UnCropped Upper** |
+| *Upscaled to 2× internal resolution and downsampled for better image quality when uncropped.* |  |
+| <img width="240" src="github/blue_original.png" alt="Original" /> | <img width="240" src="github/blie_x2.png" alt="Original x2" /> |
+| **Original** | **Original x2** |
 
 
 You can [grab the latest release here](../../releases).

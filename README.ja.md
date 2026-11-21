@@ -16,9 +16,16 @@ MagicX Zero40向けニンテンドーDS専用ランチャー [DEDICATED OS](http
 
 
 
-| <img width="240" src="github/bootlogo-preview.png" alt="Bootlogo" /> | <img width="240" src="github/original.png" alt="Original" /> |
+| <img width="240" src="github/bootlogo-preview.png" alt="メニュー" /> |  |
 | :---: | :---: |
-| **Bootlogo** | **Original** |
+| **メニュー** |  |
+| <img width="240" src="github/blue_original.png" alt="Oriinal" /> | <img width="240" src="github/blue_cropped.png" alt="Pixel Perfect" /> |
+| **Oriinal** | **Pixel Perfect** |
+| <img width="240" src="github/blue_cropped_hires.png" alt="Hi-Res 3D" /> | <img width="240" src="github/blue_cropped_under.png" alt="UnCropped Upper" /> |
+| **Hi-Res 3D** | **UnCropped Upper** |
+| *非クロップ時の画質向上のため、内部解像度を2倍に拡大してから縮小しています。* |  |
+| <img width="240" src="github/blue_original.png" alt="Original" /> | <img width="240" src="github/blie_x2.png" alt="Original x2" /> |
+| **Original** | **Original x2** |
 
 
 
