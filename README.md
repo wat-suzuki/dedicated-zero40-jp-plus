@@ -17,8 +17,11 @@ This build preserves the core minimalist experience of the original DEDICATED OS
 | **Oriinal** | **Pixel Perfect** |
 | <img width="240" src="github/blue_cropped_hires.png" alt="Hi-Res 3D" /> | <img width="240" src="github/blue_cropped_under.png" alt="UnCropped Upper" /> |
 | **Hi-Res 3D** | **UnCropped Upper** |
-| *Upscaled to 2× internal resolution and downsampled for better image quality when uncropped.* |  |
+
+*Upscaled to 2× internal resolution and downsampled for better image quality when uncropped.*
+
 | <img width="240" src="github/blue_original.png" alt="Original" /> | <img width="240" src="github/blie_x2.png" alt="Original x2" /> |
+| :---: | :---: |
 | **Original** | **Original x2** |
 
 
